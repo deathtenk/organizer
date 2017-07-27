@@ -1,0 +1,4 @@
+(use 'figwheel-sidecar.repl-api)
+exit
+(use 'figwheel-sidecar.repl-api)
+exit
