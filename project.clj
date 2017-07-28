@@ -1,6 +1,6 @@
 (defproject organizer "0.1.0-SNAPSHOT"
   :dependencies [[org.clojure/clojure "1.8.0"]
-                 [org.clojure/clojurescript "1.9.229"]
+                 [org.clojure/clojurescript "1.9.227"]
                  [reagent "0.6.0"]
                  [re-frame "0.9.4"]]
 
@@ -16,11 +16,11 @@
 
   :profiles
   {:dev
-   {:dependencies [[binaryage/devtools "0.8.2"]
-                   [figwheel-sidecar "0.5.8"]
-                   [com.cemerick/piggieback "0.2.1"]]
-
-    :plugins      [[lein-figwheel "0.5.9"]]
+   {:dependencies [[binaryage/devtools "0.9.4"]
+                   [figwheel-sidecar "0.5.10"]
+                   [com.cemerick/piggieback "0.2.2"]]
+    :source-paths ["src/cljs"]
+    :plugins      [[lein-figwheel "0.5.10"]]
     }}
 
     :repl-options {:nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}
@@ -43,7 +43,7 @@
      :source-paths ["src/cljs"]
      :compiler     {:main            organizer.core
                     :output-to       "resources/public/js/compiled/app.js"
-                    :optimizations   :advanced
+                    :optimizations   :none
                     :closure-defines {goog.DEBUG false}
                     :pretty-print    false}}
 
