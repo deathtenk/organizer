@@ -1,3 +1,5 @@
+/*.xml
+.lein*
 /*.log
 /target
 /*-init.clj
