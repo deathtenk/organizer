@@ -10,8 +10,26 @@
 (re-frame/reg-event-db
   :add-event
   (fn [{:keys [todo] :as db} [_ event]] 
-    (let [m-todo (conj todo event)]
-     (assoc db :todo m-todo))))
+    (let [m-todo (conj todo event)
+          validation (re-frame/subscribe [:validation])]
+     (if @validation
+      (assoc db :todo m-todo)
+      db))))
+
+(defn input-valid? [{:keys [event start-time end-time] :as input}]
+  (cond 
+    (empty? event) nil
+    (empty? start-time) nil
+    (empty? end-time) nil
+    :else input))
+
+(re-frame/reg-event-db
+  :validation-event
+  (fn [{:keys [validation] :as db} [_ event]]
+    (if (input-valid? event)
+      (assoc db :validation true)
+      (assoc db :validation false)
+      )))
 
 (re-frame/reg-event-db
   :delete-event
