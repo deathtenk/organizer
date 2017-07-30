@@ -8,3 +8,8 @@
   (fn [db]
     (:todo db)))
 
+(re-frame/reg-sub
+  :validation
+  (fn [db]
+    (:validation db)))
+
